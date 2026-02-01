@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSession", "CustomSession.csproj", "{5165BCEA-1D9A-9CFB-6C99-5CCE583E95AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSession", "src\CustomSession\CustomSession.csproj", "{5165BCEA-1D9A-9CFB-6C99-5CCE583E95AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSession.Tests", "..\CustomSession.Tests\CustomSession.Tests.csproj", "{E3B93E6A-8C2F-411A-8A6F-64AB83D574E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSession.Tests", "src\CustomSession.Tests\CustomSession.Tests.csproj", "{E3B93E6A-8C2F-411A-8A6F-64AB83D574E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
