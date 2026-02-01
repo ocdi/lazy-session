@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace CustomSession
 {
-    internal class LazySessionMiddleware
+    public class LazySessionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IDistributedCache _cache;
