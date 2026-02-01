@@ -66,12 +66,12 @@ namespace CustomSession
 
         public Task CommitAsync(CancellationToken cancellationToken = default)
         {
-            return CommitAsyncCore(cancellationToken);
+            return CommitAsyncCore(cancellationToken).AsTask();
         }
 
         public Task LoadAsync(CancellationToken cancellationToken = default)
         {
-            return EnsureLoadedIfNeededAsync(cancellationToken);
+            return EnsureLoadedIfNeededAsync(cancellationToken).AsTask();
         }
 
         public void Remove(string key)
@@ -128,7 +128,7 @@ namespace CustomSession
             if (_store == null) _store = new Dictionary<string, byte[]>(StringComparer.Ordinal);
         }
 
-        private async Task EnsureLoadedIfNeededAsync(CancellationToken cancellationToken = default)
+        private async ValueTask EnsureLoadedIfNeededAsync(CancellationToken cancellationToken = default)
         {
             if (_loaded) return;
 
@@ -161,7 +161,7 @@ namespace CustomSession
             _loaded = true;
         }
 
-        private async Task CommitAsyncCore(CancellationToken cancellationToken = default)
+        private async ValueTask CommitAsyncCore(CancellationToken cancellationToken = default)
         {
             if (!_modified)
             {

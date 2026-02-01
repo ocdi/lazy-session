@@ -49,20 +49,14 @@ namespace CustomSession
             // Manage cookie: set when data exists; delete when there was a cookie but now empty
             if (session.HasData)
             {
-                var cookieOptions = new CookieOptions
-                {
-                    HttpOnly = true,
-                    Secure = context.Request.IsHttps,
-                    Path = _options.Value.Cookie.Path ?? "/",
-                    SameSite = _options.Value.Cookie.SameSite
-                };
-
+                var cookieOptions = _options.Value.Cookie.Build(context);
                 context.Response.Cookies.Append(cookieName, session.Id, cookieOptions);
             }
             else if (session.HadCookieOnRequest && !session.HasData)
             {
-                // remove cookie
-                context.Response.Cookies.Delete(cookieName);
+                // remove cookie using same options as build so path/samesite match
+                var cookieOptions = _options.Value.Cookie.Build(context);
+                context.Response.Cookies.Delete(cookieName, cookieOptions);
             }
         }
 
